@@ -2,7 +2,7 @@
 // @name         Backpack.tf - Misc Utils
 // @author       Bon
 // @namespace    https://github.com/Bonfire
-// @version      1.0.0
+// @version      1.0.1
 // @description  A script to provide various backpack.tf miscellaneous utilities
 // @include      /^https?:\/\/backpack\.tf\/.*
 // @require      https://code.jquery.com/jquery-3.5.1.slim.min.js
@@ -26,9 +26,6 @@
 		// Lazy switch statement (I know...)
 		if (pageURL) {
 			switch (true) {
-				case pageURL.includes("/unusual/"):
-					markUnusuals();
-					break;
 				case pageURL.includes("/stats/"):
 					addMarketplaceButton();
 					summarizeKS();
@@ -38,24 +35,6 @@
 			}
 		}
 	}
-
-	const unwantedEffects = [
-		"Mega Strike",
-		"Silver Cyclone",
-		"Showstopper",
-		"Midnight Whirlwind",
-		"Skill Gotten Gains",
-		"Toxic Terrors",
-		"Arachnid Assault",
-		"Creepy Crawlies",
-		"Delightful Star",
-		"Frosted Star",
-		"Apotheosis",
-		"Ascension",
-		"Reindoonicorn Rancher",
-		"Twinkling Lights",
-		"Shimmering Lights",
-	];
 
 	// Stock item def index mappings
 	const stockMap = new Map();
@@ -147,23 +126,6 @@
     ${crateSeries ? `;c${crateSeries}` : ""}`;
 
 		return itemSKU.replace(/\s/g, "");
-	}
-
-	// Marks unwanted unusual effects in red when viewing the generic unusual items page
-	function markUnusuals() {
-		var itemContainers = $(".item-list, .unusual-pricelist");
-
-		for (var itemContainer of itemContainers) {
-			Array.from(itemContainer.children).forEach((itemElement) => {
-				var item = $(itemElement);
-
-				var itemEffect = item.data("effect_name");
-
-				if (unwantedEffects.includes(itemEffect)) {
-					itemElement.style.backgroundColor = "red";
-				}
-			});
-		}
 	}
 
 	// Adds a link to the marketplace.tf page for an item if it does not already have one
