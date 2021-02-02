@@ -21,15 +21,19 @@
 
   // Handle our control flow for different pages here
   function onLoad() {
-    const pageTitle = document.querySelector("title").textContent;
     const pageURL = window.location.pathname;
 
-    if (pageURL && pageURL.includes("/unusual/")) {
-      markUnusuals();
-    }
-
-    if (pageURL && pageURL.includes("/stats/")) {
-      addMarketplaceButton();
+    // Lazy switch statement (I know...)
+    if (pageURL) {
+      switch (true) {
+        case pageURL.includes("/unusual/"):
+          markUnusuals();
+          break;
+        case pageURL.includes("/stats/"):
+          addMarketplaceButton();
+          summarizeKS();
+          break;
+      }
     }
   }
 
@@ -167,6 +171,36 @@
                 </div>
             </a>`
       );
+    }
+  }
+
+  // Provides a summary showing sheen and/or killstreaker for killstreak items
+  function summarizeKS() {
+    var listedItems = $(".listing");
+
+    for (var listedItem of listedItems) {
+      var itemTitle = $(listedItem).find("h5");
+
+      // Add a line break
+      itemTitle.append(document.createElement("br"));
+
+      // Add the component containing killstreaker/sheen information
+      var listingItem = $(listedItem).find(".item");
+
+      var itemSheen = $(listingItem).data("sheen");
+      var itemStreaker = $(listingItem).data("killstreaker");
+
+      var killstreakElement = document.createElement("small");
+
+      if (itemSheen) {
+        killstreakElement.innerHTML = `${itemSheen}`;
+      }
+
+      if (itemStreaker) {
+        killstreakElement.innerHTML += ` / ${itemStreaker}`;
+      }
+
+      itemTitle.append(killstreakElement);
     }
   }
 })();
