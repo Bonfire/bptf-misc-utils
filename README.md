@@ -9,6 +9,8 @@ If you have any suggestions or bug reports, please create an [Issue](https://git
 ## Features
 
 - Highlight "unwanted" unusual item effects on the generic unusual item page
+- Provide a killstreak summary for listed items with killstreakers, showing the sheen and/or streaker
+- Provide a button with the marketplace.tf link on _all_ item stats pages
 
 ## Installation
 
