@@ -27,6 +27,10 @@
     if (pageURL && pageURL.includes("/unusual/")) {
       markUnusuals();
     }
+
+    if (pageURL && pageURL.includes("/stats/")) {
+      addMarketplaceButton();
+    }
   }
 
   var unwantedEffects = [
@@ -78,6 +82,57 @@
     .set("29", "211") // Medigun
     .set("30", "212"); // Invis Watch
 
+  // Fetch an item's SKU given the item's attributes
+  function itemLookup(itemElement) {
+    let item = $(itemElement);
+
+    let tempDefIndex = item.attr("data-defindex");
+    let itemDefIndex = stockMap.has(tempDefIndex)
+      ? stockMap.get(tempDefIndex)
+      : tempDefIndex;
+
+    let itemQuality = item.attr("data-quality");
+    let isUncraftable = item.attr("data-craftable") !== "1";
+    let itemEffectID = item.attr("data-effect_id");
+
+    let itemSkinInfo = item.find(".item-icon");
+    let itemWear, itemSkin;
+    if (itemSkinInfo.length > 0) {
+      itemSkinInfo = itemSkinInfo
+        .css("background-image")
+        .match(/warpaint\/[(?!_)\S]+_[0-9]+_[0-9]+_[0-9]+\.png/g);
+      if (itemSkinInfo !== null) {
+        itemSkin = itemSkinInfo[0].split("_")[1];
+        itemWear = itemSkinInfo[0].split("_")[2];
+      }
+    }
+
+    let isStrange = item.attr("data-quality_elevated") === "11";
+    let itemKillstreak = item.attr("data-ks_tier");
+    let isFestivized =
+      item.attr("title")?.toLowerCase().indexOf("festivized") !== -1;
+    let isAustralium = item.attr("data-australium") === "1";
+
+    // Other item attributes
+    let crateSeries = item.attr("data-crate");
+    let itemTarget = item.attr("data-priceindex")?.split("-")[1];
+
+    // Get the full item SKU, and be sure to remove any pesky whitespaces
+    let itemSKU = `${itemDefIndex};\
+    ${itemQuality}\
+    ${itemEffectID ? `;u${itemEffectID}` : ""}\
+    ${isAustralium ? ";australium" : ""}\
+    ${isUncraftable ? ";uncraftable" : ""}\
+    ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
+    ${isStrange ? ";strange" : ""}\
+    ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
+    ${itemTarget ? `;td-${itemTarget}` : ""}\
+    ${isFestivized ? ";festive" : ""}\
+    ${crateSeries ? `;c${crateSeries}` : ""}`;
+
+    return itemSKU.replace(/\s/g, "");
+  }
+
   // Marks unwanted unusual effects in red when viewing the generic unusual items page
   function markUnusuals() {
     var itemContainers = $(".item-list, .unusual-pricelist");
@@ -92,6 +147,26 @@
           itemElement.style.backgroundColor = "red";
         }
       });
+    }
+  }
+
+  // Adds a link to the marketplace.tf page for an item if it does not already have one
+  function addMarketplaceButton() {
+    var itemElement = $(".item")[0];
+
+    var mptfElement = $('a[href*="marketplace.tf"]')[0];
+
+    if ($(mptfElement).attr("class") !== "price-box") {
+      $(".price-boxes").append(
+        `<a class="price-box" href="https://marketplace.tf/items/tf2/${itemLookup(
+          itemElement
+        )}" target="_blank" data-tip="top" data-original-title="mptf">
+                <img src="/images/marketplace-medium.png?v=2" alt="marketplace">
+                <div class="text" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 0;">
+                    <div class="value" style="font-size: 14px;">MP.TF</div>
+                </div>
+            </a>`
+      );
     }
   }
 })();
