@@ -31,6 +31,7 @@ You can also install this script by manually pasting the code found in the above
 Added:
 
 - Unwanted unusual item effect marking
+- Marketplace.tf link to all items on their stats page
 
 ## Credits
 
