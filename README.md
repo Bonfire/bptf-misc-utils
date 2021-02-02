@@ -1,6 +1,6 @@
 # backpack.tf - Misc Utils
 
-This user script provides various [backpack.tf](https://backpack.tf/) utilities.
+This user script provides miscellaneous [backpack.tf] utilities.
 
 If this script helped you out, feel free to become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-misc-utils/stargazers)!
 
@@ -26,11 +26,13 @@ You can also install this script by manually pasting the code found in the above
 
 ## Examples
 
+![Killstreak summary](https://i.imgur.com/lnty6VI.png)
+
 _Killstreak summary showing the sheen and/or killstreaker for listed items_
 
-_Links to the marketplace.tf page for all items_
+![Marketplace.tf link](https://i.imgur.com/UoZB5rx.png)
 
-_Marking of "unwanted" unusual effects on the generic unusual items search_
+_Links to the marketplace.tf page for all items_
 
 ## Changelog
 
@@ -40,6 +42,7 @@ Added:
 
 - Unwanted unusual item effect marking
 - Marketplace.tf link to all items on their stats page
+- Killstreak summary for killstreak items (showing sheen and/or streaker)
 
 ## Credits
 
