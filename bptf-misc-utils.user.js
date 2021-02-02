@@ -204,7 +204,7 @@
 				itemTitle.append(document.createElement("br"));
 
 				// Add the sheen
-				var sheenElement = document.createElement("span");
+				var sheenElement = document.createElement("small");
 				sheenElement.className = "text-muted";
 				sheenElement.innerHTML = `${itemSheen}`;
 				sheenElement.style.color = sheenColors[itemSheen];
@@ -213,7 +213,7 @@
 
 			if (itemStreaker) {
 				// Add the streaker
-				var streakerElement = document.createElement("span");
+				var streakerElement = document.createElement("small");
 				streakerElement.className = "text-muted";
 				streakerElement.innerHTML = ` / ${itemStreaker}`;
 				itemTitle.append(streakerElement);

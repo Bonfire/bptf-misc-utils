@@ -24,6 +24,14 @@ You can also install this script by manually pasting the code found in the above
 
 **Note: To receive automatic updates when this script updates, please be sure to enable automatic update checking for this script on your preferred User Script Manager.**
 
+## Examples
+
+_Killstreak summary showing the sheen and/or killstreaker for listed items_
+
+_Links to the marketplace.tf page for all items_
+
+_Marking of "unwanted" unusual effects on the generic unusual items search_
+
 ## Changelog
 
 **1.0.0**
