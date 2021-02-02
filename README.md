@@ -1,6 +1,6 @@
 # backpack.tf - Misc Utils
 
-This user script provides miscellaneous [backpack.tf] utilities.
+This user script provides miscellaneous [backpack.tf](https://backpack.tf/) utilities.
 
 If this script helped you out, feel free to become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-misc-utils/stargazers)!
 
