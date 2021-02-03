@@ -37,6 +37,12 @@ _Links to the marketplace.tf page for all items_
 
 ## Changelog
 
+**1.0.2**
+
+Improved:
+
+- Killstreak summary formatting for buy orders with a killstreaker but no sheen
+
 **1.0.1**
 
 Removed:
