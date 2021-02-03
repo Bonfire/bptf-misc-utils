@@ -163,20 +163,33 @@ https: (function () {
       var itemSheen = $(listingItem).data("sheen");
       var itemStreaker = $(listingItem).data("killstreaker");
 
-      if (itemSheen) {
-        // Add a line break
+      // Not very proud of any code below this
+      if (itemSheen || itemStreaker) {
         itemTitle.append(document.createElement("br"));
+      }
 
-        // Add the sheen
+      // Account for the three cases a buy listing can be in
+      if (itemSheen && !itemStreaker) {
+        // 1. Sheen but no streaker
         var sheenElement = document.createElement("small");
         sheenElement.className = "text-muted";
         sheenElement.innerHTML = `${itemSheen}`;
         sheenElement.style.color = sheenColors[itemSheen];
         itemTitle.append(sheenElement);
-      }
+      } else if (!itemSheen && itemStreaker) {
+        // 2. Streaker but no sheen
+        var streakerElement = document.createElement("small");
+        streakerElement.className = "text-muted";
+        streakerElement.innerHTML = `${itemStreaker}`;
+        itemTitle.append(streakerElement);
+      } else {
+        // 3. Both sheen and streaker
+        var sheenElement = document.createElement("small");
+        sheenElement.className = "text-muted";
+        sheenElement.innerHTML = `${itemSheen}`;
+        sheenElement.style.color = sheenColors[itemSheen];
+        itemTitle.append(sheenElement);
 
-      if (itemStreaker) {
-        // Add the streaker
         var streakerElement = document.createElement("small");
         streakerElement.className = "text-muted";
         streakerElement.innerHTML = ` / ${itemStreaker}`;
