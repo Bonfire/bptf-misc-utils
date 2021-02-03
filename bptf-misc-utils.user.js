@@ -2,7 +2,7 @@
 // @name         Backpack.tf - Misc Utils
 // @author       Bon
 // @namespace    https://github.com/Bonfire
-// @version      1.0.2
+// @version      1.0.3
 // @description  A script to provide various backpack.tf miscellaneous utilities
 // @include      /^https?:\/\/backpack\.tf\/.*
 // @downloadURL  https://github.com/Bonfire/bptf-misc-utils/raw/master/bptf-misc-utils.user.js
@@ -11,7 +11,7 @@
 // @run-at       document-end
 // ==/UserScript==
 
-https: (function () {
+(function () {
   "use strict";
 
   // Always make sure that the page is fully loaded
@@ -182,7 +182,7 @@ https: (function () {
         streakerElement.className = "text-muted";
         streakerElement.innerHTML = `${itemStreaker}`;
         itemTitle.append(streakerElement);
-      } else {
+      } else if (itemSheen && itemStreaker) {
         // 3. Both sheen and streaker
         var sheenElement = document.createElement("small");
         sheenElement.className = "text-muted";

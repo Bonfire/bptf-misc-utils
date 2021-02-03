@@ -37,6 +37,12 @@ _Links to the marketplace.tf page for all items_
 
 ## Changelog
 
+**1.0.3**
+
+Improved:
+
+- Killstreak summary for non-killstreak items
+
 **1.0.2**
 
 Improved:
