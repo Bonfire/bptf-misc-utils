@@ -37,7 +37,7 @@ _Links to the marketplace.tf page for all items_
 
 ## Changelog
 
-**1.0.3**
+**1.0.4**
 
 Fixed:
 
