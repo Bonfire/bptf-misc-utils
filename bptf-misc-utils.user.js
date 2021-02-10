@@ -66,8 +66,10 @@
     .set("22", "209") // Pistol - Engineer
     .set("23", "209") // Pistol - Scout
     .set("24", "210") // Revolver
+    .set("25", "737") // Construction PDA
     .set("29", "211") // Medigun
-    .set("30", "212"); // Invis Watch
+    .set("30", "212") // Invis Watch
+    .set("735", "736"); // Sapper
 
   const sheenColors = {
     "Team Shine": "#FF1D15",
