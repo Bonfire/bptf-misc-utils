@@ -39,6 +39,12 @@ _Links to the marketplace.tf page for all items_
 
 **1.0.3**
 
+Fixed:
+
+- Stock item mapping for the "Construction PDA" and "Sapper"
+
+**1.0.3**
+
 Improved:
 
 - Killstreak summary for non-killstreak items
