@@ -2,7 +2,7 @@
 // @name         Backpack.tf - Misc Utils
 // @author       Bon
 // @namespace    https://github.com/Bonfire
-// @version      1.0.4
+// @version      1.0.5
 // @description  A script to provide various backpack.tf miscellaneous utilities
 // @include      /^https?:\/\/backpack\.tf\/.*
 // @downloadURL  https://github.com/Bonfire/bptf-misc-utils/raw/master/bptf-misc-utils.user.js
@@ -114,12 +114,30 @@
 
     // Other item attributes
     let crateSeries = item.attr("data-crate");
-    let itemTarget = item.attr("data-priceindex")?.split("-")[1];
+    let itemTarget, itemOutput, itemOutputQuality;
+    const priceIndex = item.attr("data-priceindex").split("-");
+    if (priceIndex[0] !== "0") {
+      switch (item.attr("data-base_name")) {
+        case "Fabricator":
+          [itemOutput, itemOutputQuality, itemTarget] = priceIndex;
+          break;
+        case "Kit":
+          itemTarget = priceIndex[1];
+          break;
+        case "Strangifier":
+        case "Unusualifier":
+          itemTarget = priceIndex[0];
+      }
+    }
+    if (itemDefIndex == "9536") {
+      itemDefIndex =
+        (Math.floor(itemSkin / 100) % 2 === 0 ? "17" : "16") + itemSkin;
+    }
 
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
     ${itemQuality}\
-    ${itemEffectID ? `;u${itemEffectID}` : ""}\
+    ${itemEffectID ? `;u${itemEffectID}` : ""}\    
     ${isAustralium ? ";australium" : ""}\
     ${isUncraftable ? ";uncraftable" : ""}\
     ${itemSkinInfo ? `;w${itemWear};pk${itemSkin}` : ""}\
@@ -127,7 +145,9 @@
     ${itemKillstreak ? `;kt-${itemKillstreak}` : ""}\
     ${itemTarget ? `;td-${itemTarget}` : ""}\
     ${isFestivized ? ";festive" : ""}\
-    ${crateSeries ? `;c${crateSeries}` : ""}`;
+    ${crateSeries ? `;c${crateSeries}` : ""}\
+    ${itemOutput ? `;od-${itemOutput}` : ""}\
+    ${itemOutputQuality ? `;oq-${itemOutputQuality}` : ""}`;
 
     return itemSKU.replace(/\s/g, "");
   }

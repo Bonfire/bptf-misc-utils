@@ -37,6 +37,15 @@ _Links to the marketplace.tf page for all items_
 
 ## Changelog
 
+**1.0.5**
+
+Added:
+
+- SKU generation for Unusualifiers - [@Preport](https://github.com/Preport)
+- SKU generation for War Paints - [@Preport](https://github.com/Preport)
+- Add SKU generation support for Strangifiers - [@Preport](https://github.com/Preport)
+- Add SKU generation support for Kit Fabricators - [@Preport](https://github.com/Preport)
+
 **1.0.4**
 
 Fixed:
