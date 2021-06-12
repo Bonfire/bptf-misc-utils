@@ -2,7 +2,7 @@
 // @name         Backpack.tf - Misc Utils
 // @author       Bon
 // @namespace    https://github.com/Bonfire
-// @version      1.0.5
+// @version      1.0.6
 // @description  A script to provide various backpack.tf miscellaneous utilities
 // @include      /^https?:\/\/backpack\.tf\/.*
 // @downloadURL  https://github.com/Bonfire/bptf-misc-utils/raw/master/bptf-misc-utils.user.js
@@ -86,6 +86,7 @@
     let item = $(itemElement);
 
     let tempDefIndex = item.attr("data-defindex");
+    let itemName = item.attr("data-original-title");
     let itemDefIndex = stockMap.has(tempDefIndex)
       ? stockMap.get(tempDefIndex)
       : tempDefIndex;
@@ -109,7 +110,8 @@
     let isStrange = item.attr("data-quality_elevated") === "11";
     let itemKillstreak = item.attr("data-ks_tier");
     let isFestivized =
-      item.attr("title")?.toLowerCase().indexOf("festivized") !== -1;
+      item.attr("data-original-title")?.toLowerCase().indexOf("festivized") !==
+      -1;
     let isAustralium = item.attr("data-australium") === "1";
 
     // Other item attributes
@@ -118,6 +120,19 @@
     const priceIndex = item.attr("data-priceindex").split("-");
     if (priceIndex[0] !== "0") {
       switch (item.attr("data-base_name")) {
+        case "Chemistry Set":
+          // Only change defindex if it's a buy listing or it's the item on the stats page.
+          // So it won't change anything if it's from someones inventory or a sell listing.
+          if (!item.attr("data-original_id")) {
+            if (itemName.includes("Festive")) itemDefIndex = "20007";
+            else if (itemName.includes("Collector's")) itemDefIndex = "20006";
+            // Unsure about this one couldn't find any items might be unused.
+            else if (itemName.includes("Strange")) itemDefIndex = "20008";
+            // Assume all strangifier's are series 2 which they are definetly not :(
+            // Used series 2 since it's the one with the biggest volume (Don't quote me on that).
+            // Available defindexes; Series 1: 20000, Series 1 Rare: 20001, Series 2: 20005, Series 3: 20009.
+            else if (itemName.includes("Strangifier")) itemDefIndex = "20005";
+          }
         case "Fabricator":
           [itemOutput, itemOutputQuality, itemTarget] = priceIndex;
           break;
@@ -133,7 +148,6 @@
       itemDefIndex =
         (Math.floor(itemSkin / 100) % 2 === 0 ? "17" : "16") + itemSkin;
     }
-
     // Get the full item SKU, and be sure to remove any pesky whitespaces
     let itemSKU = `${itemDefIndex};\
     ${itemQuality}\

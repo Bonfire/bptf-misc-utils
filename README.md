@@ -4,10 +4,11 @@ This user script provides miscellaneous [backpack.tf](https://backpack.tf/) util
 
 If you have any suggestions or bug reports, please create an [Issue](https://github.com/Bonfire/bptf-misc-utils/issues).
 
-If this script helped you out, please feel free to support me by doing the any of the following: 
-* Become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-misc-utils/stargazers)
+If this script helped you out, please feel free to support me by doing the any of the following:
 
-* <a href="https://www.buymeacoffee.com/bonf" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+- Become a [⭐Stargazer⭐](https://github.com/Bonfire/bptf-misc-utils/stargazers)
+
+- <a href="https://www.buymeacoffee.com/bonf" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 ## Features
 
@@ -39,6 +40,12 @@ _Killstreak summary showing the sheen and/or killstreaker for listed items_
 _Links to the marketplace.tf page for all items_
 
 ## Changelog
+
+**1.0.6**
+
+Added:
+
+- SKU generation for Chemistry Sets - [@Preport](https://github.com/Preport)
 
 **1.0.5**
 
