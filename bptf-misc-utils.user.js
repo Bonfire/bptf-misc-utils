@@ -110,8 +110,7 @@
     let isStrange = item.attr("data-quality_elevated") === "11";
     let itemKillstreak = item.attr("data-ks_tier");
     let isFestivized =
-      item.attr("data-original-title")?.toLowerCase().indexOf("festivized") !==
-      -1;
+      item.attr("data-original-title") ? item.attr("data-original-title").toLowerCase().indexOf("festivized") !== -1 : false;
     let isAustralium = item.attr("data-australium") === "1";
 
     // Other item attributes
