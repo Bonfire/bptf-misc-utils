@@ -41,6 +41,12 @@ _Links to the marketplace.tf page for all items_
 
 ## Changelog
 
+**1.0.7**
+
+Fixed:
+
+- SKU festive generation - [@IdiNium](https://github.com/idinium96)
+
 **1.0.6**
 
 Added:
